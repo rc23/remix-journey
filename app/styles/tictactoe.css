@@ -1,0 +1,42 @@
+body {
+  background-image: var(--gradient-background);
+}
+
+.container {
+  min-height: inherit;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  grid-template-rows: 10rem 10rem 10rem;
+  margin: 3rem;
+}
+
+h1 {
+  margin-bottom: 3rem;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.75);
+  text-align: center;
+  line-height: 0.5;
+}
+
+h1 span {
+  display: block;
+  font-size: 4.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5), 0 5px 0 rgba(0, 0, 0, 0.75);
+}
+
+button:disabled {
+  color: var(--color-background);
+  background-color: var(--color-links);
+  font-weight: bold;
+}

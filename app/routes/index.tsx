@@ -1,32 +1,33 @@
+import { Link } from "remix";
+import type { MetaFunction, LinksFunction } from "remix";
+import stylesUrl from "../styles/index.css";
+
+export let meta: MetaFunction = () => {
+  return {
+    title: "Remix: So great, it's funny!",
+    description: "Remix jokes app. Learn Remix and laugh at the same time!",
+  };
+};
+
+export let links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: stylesUrl }];
+};
+
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="container">
+      <div className="content">
+        <h1>
+          Remix <span>Journey!</span>
+        </h1>
+        <nav>
+          <ul>
+            <li>
+              <Link to="tictactoe">Play Tic Tac Toe</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 }
