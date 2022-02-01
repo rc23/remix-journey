@@ -1,7 +1,7 @@
 import type { LoaderFunction, LinksFunction } from "remix";
 import { useLoaderData, useCatch } from "remix";
 import stylesUrl from "../../styles/tictactoe.css";
-import TicTacToe from "~/components/Tictactoe";
+import TicTacToe from "~/components/tictactoe/Tictactoe";
 
 export type LoaderData = { board: Array<string>; isPlayerOneTurn: boolean };
 

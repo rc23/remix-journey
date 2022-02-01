@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { LoaderData } from "app/routes/tictactoe";
 
 interface Players {
@@ -108,7 +108,7 @@ export default function Tictactoe(data: LoaderData) {
     <div className="container">
       <h1>Tic Tac Toe</h1>
 
-      <span>{isPlayerOneTurn ? "Player 1" : "Player 2"}</span>
+      <h5>{isPlayerOneTurn ? "Player 1" : "Player 2"}</h5>
 
       <div className="board">{renderBoard(board, isPlayerOneTurn)}</div>
 

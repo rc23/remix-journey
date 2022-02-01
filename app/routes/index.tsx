@@ -5,7 +5,7 @@ import stylesUrl from "../styles/index.css";
 export let meta: MetaFunction = () => {
   return {
     title: "Remix: So great, it's funny!",
-    description: "Remix jokes app. Learn Remix and laugh at the same time!",
+    description: "Remix journey app. Learn Remix!",
   };
 };
 
@@ -24,6 +24,9 @@ export default function Index() {
           <ul>
             <li>
               <Link to="tictactoe">Play Tic Tac Toe</Link>
+            </li>
+            <li>
+              <Link to="shop">Check out our shop</Link>
             </li>
           </ul>
         </nav>

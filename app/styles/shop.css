@@ -10,11 +10,8 @@ body {
   align-items: center;
 }
 
-.board {
-  display: grid;
-  grid-template-columns: 5rem 5rem 5rem;
-  grid-template-rows: 5rem 5rem 5rem;
-  margin: 3rem;
+.order {
+  margin: 1rem;
 }
 
 h1 {
@@ -25,7 +22,7 @@ h1 {
 }
 
 h5 {
-  margin-bottom: 1rem;
+  margin: 1rem;
   text-shadow: 0 3px 0 rgba(0, 0, 0, 0.75);
   text-align: center;
   line-height: 0.5;
@@ -38,15 +35,7 @@ button:disabled {
 }
 
 @media screen and (min-width: 640px) {
-  .board {
-    grid-template-columns: 7rem 7rem 7rem;
-    grid-template-rows: 7rem 7rem 7rem;
-  }
 }
 
 @media screen and (min-width: 1024px) {
-  .board {
-    grid-template-columns: 10rem 10rem 10rem;
-    grid-template-rows: 10rem 10rem 10rem;
-  }
 }
