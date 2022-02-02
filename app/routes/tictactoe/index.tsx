@@ -1,29 +1,30 @@
-import type { LoaderFunction, LinksFunction } from "remix";
-import { useLoaderData, useCatch } from "remix";
-import stylesUrl from "../../styles/tictactoe.css";
-import TicTacToe from "~/components/tictactoe/Tictactoe";
+import { useCatch, useLoaderData } from 'remix';
+import TicTacToe from '~/components/tictactoe/Tictactoe';
+import stylesUrl from '../../styles/tictactoe.css';
+import type { LinksFunction, LoaderFunction } from 'remix';
 
 export type LoaderData = { board: Array<string>; isPlayerOneTurn: boolean };
 
-export let loader: LoaderFunction = async () => {
-  let board = ["", "", "", "", "", "", "", "", ""];
-  let isPlayerOneTurn = true;
-  let data: LoaderData = { board, isPlayerOneTurn };
+export const loader: LoaderFunction = async () => {
+  const board = ['', '', '', '', '', '', '', '', ''];
+  const isPlayerOneTurn = true;
+  const data: LoaderData = { board, isPlayerOneTurn };
+
   return data;
 };
 
-export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: stylesUrl }];
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: stylesUrl }];
 };
 
 export default function TictactoeIndexRoute() {
-  let data = useLoaderData<LoaderData>();
+  const data = useLoaderData<LoaderData>();
 
   return <TicTacToe {...data} />;
 }
 
 export function CatchBoundary() {
-  let caught = useCatch();
+  const caught = useCatch();
 
   if (caught.status === 404) {
     return (
@@ -37,5 +38,6 @@ export function CatchBoundary() {
 
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
+
   return <div className="error-container">I did a whoopsies.</div>;
 }

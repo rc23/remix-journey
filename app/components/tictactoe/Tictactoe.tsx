@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import type { LoaderData } from "app/routes/tictactoe";
+import { useEffect, useState } from 'react';
+import type { LoaderData } from 'app/routes/tictactoe';
 
 interface Players {
   [index: string]: string;
 }
 
 const PLAYERS: Players = {
-  p1: "X",
-  p2: "O",
+  p1: 'X',
+  p2: 'O',
 };
-
 const WINNING_CONDITIONS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -22,28 +21,28 @@ const WINNING_CONDITIONS = [
 ];
 
 export default function Tictactoe(data: LoaderData) {
-  let [board, setBoard] = useState(data.board);
-  let [isPlayerOneTurn, setisPlayerOneTurn] = useState(data.isPlayerOneTurn);
-  let [isThereAWinner, setIsThereAWinner] = useState(false);
+  const [board, setBoard] = useState(data.board);
+  const [isPlayerOneTurn, setisPlayerOneTurn] = useState(data.isPlayerOneTurn);
+  const [isThereAWinner, setIsThereAWinner] = useState(false);
 
   useEffect(() => {
     WINNING_CONDITIONS.forEach((condition) => {
       if (
-        board[condition[0]] === "X" &&
-        board[condition[1]] === "X" &&
-        board[condition[2]] === "X"
+        board[condition[0]] === 'X' &&
+        board[condition[1]] === 'X' &&
+        board[condition[2]] === 'X'
       ) {
         setIsThereAWinner(true);
-        alertResultAndClearBoard("Winner - Player 1");
+        alertResultAndClearBoard('Winner - Player 1');
       }
 
       if (
-        board[condition[0]] === "O" &&
-        board[condition[1]] === "O" &&
-        board[condition[2]] === "O"
+        board[condition[0]] === 'O' &&
+        board[condition[1]] === 'O' &&
+        board[condition[2]] === 'O'
       ) {
         setIsThereAWinner(true);
-        alertResultAndClearBoard("Winner - Player 2");
+        alertResultAndClearBoard('Winner - Player 2');
       }
     });
   }, [board]);
@@ -51,16 +50,16 @@ export default function Tictactoe(data: LoaderData) {
   useEffect(() => {
     let areAllButtonsDisabled = 0;
 
-    const buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll('button');
 
     for (let i = 0; i < buttons.length; i++) {
-      if (buttons[i].hasAttribute("disabled")) {
+      if (buttons[i].hasAttribute('disabled')) {
         areAllButtonsDisabled++;
       }
     }
 
     if (areAllButtonsDisabled === board.length && !isThereAWinner) {
-      alertResultAndClearBoard("Tie");
+      alertResultAndClearBoard('Tie');
     }
   }, [board]);
 
@@ -68,22 +67,22 @@ export default function Tictactoe(data: LoaderData) {
     alert(message);
     resetBoard();
   };
-
   const markSquare = (isPlayerOneTurn: boolean, i: number) => {
-    let button = document.getElementById(`button-${i}`);
-    let marker = isPlayerOneTurn ? PLAYERS["p1"] : PLAYERS["p2"];
+    const button = document.getElementById(`button-${i}`);
+    const marker = isPlayerOneTurn ? PLAYERS['p1'] : PLAYERS['p2'];
 
-    button!.innerHTML = marker;
-    button!.setAttribute("disabled", "");
+    if (button) {
+      button.innerHTML = marker;
+      button.setAttribute('disabled', '');
+    }
 
-    let newBoard = [...board];
+    const newBoard = [...board];
 
     newBoard[i] = marker;
 
     setBoard(newBoard);
     setisPlayerOneTurn(!isPlayerOneTurn);
   };
-
   const renderBoard = (board: string[], isPlayerOneTurn: boolean) =>
     board.map((square: string, i: number) => (
       <button
@@ -94,11 +93,10 @@ export default function Tictactoe(data: LoaderData) {
         {square}
       </button>
     ));
-
   const resetBoard = () => {
-    let buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll('button');
     for (let i = 0; i < buttons.length; i++) {
-      buttons[i].removeAttribute("disabled");
+      buttons[i].removeAttribute('disabled');
     }
     setBoard(data.board);
     setIsThereAWinner(false);
@@ -108,7 +106,7 @@ export default function Tictactoe(data: LoaderData) {
     <div className="container">
       <h1>Tic Tac Toe</h1>
 
-      <h5>{isPlayerOneTurn ? "Player 1" : "Player 2"}</h5>
+      <h5>{isPlayerOneTurn ? 'Player 1' : 'Player 2'}</h5>
 
       <div className="board">{renderBoard(board, isPlayerOneTurn)}</div>
 

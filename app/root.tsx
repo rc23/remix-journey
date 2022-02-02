@@ -5,30 +5,30 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "remix";
-import type { LinksFunction, MetaFunction } from "remix";
-import globalStylesUrl from "./styles/global.css";
-import globalMediumStylesUrl from "./styles/global-medium.css";
-import globalLargeStylesUrl from "./styles/global-large.css";
+} from 'remix';
+import globalLargeStylesUrl from './styles/global-large.css';
+import globalMediumStylesUrl from './styles/global-medium.css';
+import globalStylesUrl from './styles/global.css';
+import type { LinksFunction, MetaFunction } from 'remix';
 
-export let links: LinksFunction = () => {
+export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: globalStylesUrl },
+    { rel: 'stylesheet', href: globalStylesUrl },
     {
-      rel: "stylesheet",
+      rel: 'stylesheet',
       href: globalMediumStylesUrl,
-      media: "print, (min-width: 640px)",
+      media: 'print, (min-width: 640px)',
     },
     {
-      rel: "stylesheet",
+      rel: 'stylesheet',
       href: globalLargeStylesUrl,
-      media: "screen and (min-width: 1024px)",
+      media: 'screen and (min-width: 1024px)',
     },
   ];
 };
 
 export const meta: MetaFunction = () => {
-  return { title: "Remix Journey" };
+  return { title: 'Remix Journey' };
 };
 
 export default function App() {
@@ -44,7 +44,7 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        {process.env.NODE_ENV === "development" && <LiveReload />}
+        {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>
   );

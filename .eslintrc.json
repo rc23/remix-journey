@@ -1,0 +1,88 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "import",
+    "sort-imports-es6-autofix"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "after-used",
+        "ignoreRestSiblings": true,
+        "vars": "local"
+      }
+    ],
+    "import/no-duplicates": "error",
+    "no-unused-vars": "off",
+    "padding-line-between-statements": [
+      "error",
+      // Ensure no spaces between consts
+      {
+        "blankLine": "never",
+        "next": "const",
+        "prev": "const"
+      },
+      // Ensure no spaces between lets
+      {
+        "blankLine": "never",
+        "next": "let",
+        "prev": "let"
+      },
+      {
+        // Ensure no spaces between imports
+        "blankLine": "never",
+        "next": "import",
+        "prev": "import"
+      },
+      {
+        // Ensure a spaces before a return
+        "blankLine": "always",
+        "next": "return",
+        "prev": "*"
+      }
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": false,
+        "avoidEscape": true
+      }
+    ],
+    "sort-imports-es6-autofix/sort-imports-es6": [
+      2,
+      {
+        "ignoreCase": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
+    "spaced-comment": ["error", "always"]
+  }
+}

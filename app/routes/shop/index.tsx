@@ -1,7 +1,7 @@
-import type { LoaderFunction, LinksFunction } from "remix";
-import { useLoaderData, useCatch } from "remix";
-import stylesUrl from "../../styles/shop.css";
-import Shop from "~/components/shop/Shop";
+import { useCatch, useLoaderData } from 'remix';
+import Shop from '~/components/shop/Shop';
+import stylesUrl from '../../styles/shop.css';
+import type { LinksFunction, LoaderFunction } from 'remix';
 
 export type Order = {
   orderId: number;
@@ -18,56 +18,55 @@ export type Prices = {
 
 export type LoaderData = { orders: Array<Order>; prices: Prices };
 
-export let loader: LoaderFunction = async () => {
-  let orders = [
+export const loader: LoaderFunction = async () => {
+  const orders = [
     {
       orderId: 1,
       userId: 123,
       date: 1643702630386,
-      products: ["soda", "popcorn", "soda"],
+      products: ['soda', 'popcorn', 'soda'],
     },
     {
       orderId: 2,
       userId: 456,
       date: 1643702630387,
-      products: ["soda", "popcorn", "soda"],
+      products: ['soda', 'popcorn', 'soda'],
     },
     {
       orderId: 3,
       userId: 789,
       date: 1643702630388,
-      products: ["soda", "popcorn", "soda"],
+      products: ['soda', 'popcorn', 'soda'],
     },
     {
       orderId: 4,
       userId: 123,
       date: 1643702630389,
-      products: ["soda"],
+      products: ['soda'],
     },
   ];
-
-  let prices = {
+  const prices = {
     soda: 2,
     popcorn: 7.5,
     bundle: 9,
   };
+  const data: LoaderData = { orders, prices };
 
-  let data: LoaderData = { orders, prices };
   return data;
 };
 
-export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: stylesUrl }];
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: stylesUrl }];
 };
 
 export default function ShopRoute() {
-  let data = useLoaderData<LoaderData>();
+  const data = useLoaderData<LoaderData>();
 
   return <Shop {...data} />;
 }
 
 export function CatchBoundary() {
-  let caught = useCatch();
+  const caught = useCatch();
 
   if (caught.status === 404) {
     return (
@@ -81,5 +80,6 @@ export function CatchBoundary() {
 
 export function ErrorBoundary({ error }: { error: Error }) {
   console.error(error);
+
   return <div className="error-container">I did a whoopsies.</div>;
 }

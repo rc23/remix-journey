@@ -1,4 +1,4 @@
-import type { LoaderData, Order } from "app/routes/shop";
+import type { LoaderData, Order } from 'app/routes/shop';
 
 type HashedData = {
   [index: number]: string[];
@@ -6,22 +6,20 @@ type HashedData = {
 };
 
 export default function Shop(data: LoaderData) {
-  let { orders, prices } = data;
-
+  const { orders, prices } = data;
   const renderOrders = () =>
     orders.map((order) => (
       <div key={`order-${order.orderId}`} className="order">
         <div>User - {order.userId}</div>
         <div>Date - {new Date(order.date).toUTCString()}</div>
         <div>
-          Products -{" "}
+          Products -{' '}
           {order.products.map((product, i) => (
             <span key={`product-${i}`}>{product} </span>
           ))}
         </div>
       </div>
     ));
-
   const renderPrices = () =>
     Object.entries(prices).map((price, i) => (
       <h5 key={i}>
@@ -30,9 +28,8 @@ export default function Shop(data: LoaderData) {
         </span>
       </h5>
     ));
-
   const renderGrandTotal = () => {
-    let hashedData: HashedData = {
+    const hashedData: HashedData = {
       grandTotal: 0,
     };
 
@@ -43,27 +40,27 @@ export default function Shop(data: LoaderData) {
     });
 
     Object.entries(hashedData).forEach((x) => {
-      let products = x[1];
+      const products = x[1];
 
       if (Array.isArray(products)) {
-        let tNrOfSodas = products.filter(
-          (product) => product === "soda"
+        const tNrOfSodas = products.filter(
+          (product) => product === 'soda',
         ).length;
-        let tNrOfPopcorn = products.filter(
-          (product) => product === "popcorn"
+        const tNrOfPopcorn = products.filter(
+          (product) => product === 'popcorn',
         ).length;
 
         let bundleTotal = 0;
         let nrOfBundles = 0;
 
         if (tNrOfSodas > tNrOfPopcorn) {
-          let remainingSodas = tNrOfSodas - tNrOfPopcorn;
+          const remainingSodas = tNrOfSodas - tNrOfPopcorn;
           bundleTotal += remainingSodas * prices.soda;
           nrOfBundles = tNrOfSodas - remainingSodas;
         }
 
         if (tNrOfPopcorn > tNrOfSodas) {
-          let remainingPopcorn = tNrOfPopcorn - tNrOfSodas;
+          const remainingPopcorn = tNrOfPopcorn - tNrOfSodas;
           bundleTotal += remainingPopcorn * prices.popcorn;
           nrOfBundles = tNrOfPopcorn - remainingPopcorn;
         }

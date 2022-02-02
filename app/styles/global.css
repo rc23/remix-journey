@@ -19,8 +19,8 @@
     rgb(20, 55, 115) 35%,
     rgb(30, 10, 70) 100%
   );
-  --font-body: -apple-system, "Segoe UI", Helvetica Neue, Helvetica, Roboto,
-    Arial, sans-serif, system-ui, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-body: -apple-system, 'Segoe UI', Helvetica Neue, Helvetica, Roboto,
+    Arial, sans-serif, system-ui, 'Apple Color Emoji', 'Segoe UI Emoji';
   /* --font-display: baloo, var(--font-body); */
 }
 
